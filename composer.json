@@ -1,0 +1,28 @@
+{
+    "name": "pgs-nato/repositorio",
+    "description": "Descrição do seu projeto",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paulo",
+            "email": "pgscontas@gmail.com"
+        }
+    ],
+    "require": {
+        "cboden/ratchet": "^0.4.4"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.6"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
