@@ -1,14 +1,14 @@
 <?php
 
-include "../database/conexao.php";
+require __DIR__ . '/../vendor/autoload.php';
+
+use App\Models\Db\Database2;
+
+$database = new Database2;
+
+$pdo = $database->setConnection();
 
 try {
-
-    // Conectando ao banco de dados com PDO
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-    // Configurando o PDO para lançar exceções em caso de erro
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     // Preparando a consulta SQL
     $sql = "SELECT * FROM wf_usuario";
     $stmt = $pdo->prepare($sql);

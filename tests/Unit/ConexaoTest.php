@@ -25,3 +25,15 @@ it('=> gera um erro quando a conexão com o banco de dados falha', function () {
 
     expect($connectionSuccessful)->toBeFalse();
 });
+
+use App\Models\Db\Database2;
+it('=> Segundo teste de connexão', function(){
+    $pdo2 = new Database2;
+    $pdo = $pdo2->setConnection();
+
+    if (empty(get_object_vars($pdo))) {
+        $result = "O objeto está vazio.";
+    }
+    // Testa se a conexão é bem-sucedida
+    expect($result)->toBe('O objeto está vazio.');
+});
