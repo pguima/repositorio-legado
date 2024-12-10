@@ -22,15 +22,51 @@ try {
     $lista = '';
     // Exibindo os resultados
     foreach ($usuarios as $usuario) {
+
+        // Whatsapp
+        $whatsapp = preg_replace('/\D/', '', $usuario['tel']);
+
+        switch ($usuario['acesso']) {
+            case 'Usuário':
+                $style_badge = 'text-bg-secondary';
+                break;
+            case 'Administrador':
+                $style_badge = 'text-bg-dark';
+                break;
+        }
+
         $lista .= "<tr id='user{$usuario['id']}'>";
-        $lista .= "<td class='id'>{$usuario['id']}</td>";
+        $lista .= "<td class='id'><b>{$usuario['id']}</b></td>";
         $lista .= "<td class='nome'>{$usuario['nome']}</td>";
         $lista .= "<td class='email'>{$usuario['email']}</td>";
-        $lista .= "<td class='email'>{$usuario['tel']}</td>";
-        $lista .= "<td class='acesso'>{$usuario['acesso']}</td>";
-        $lista .= "<td class='td_entrar_perfil'><a href='http://localhost:8000/perfil?id={$usuario['id']}'><i class='material-icons'>person</i></a></td>";
-        $lista .= "<td class='td_editar_perfil'><i onclick='editar_usuario(\"user{$usuario["id"]}\")' class='material-icons'>settings</i></td>";
-        $lista .= "<td class='td_excluir_pasta'><i onclick='excluir_usuario(\"user{$usuario["id"]}\")' class='material-icons'>delete_forever</i></td>";
+        $lista .= "<td class='tel'>
+                        <a href='https://api.whatsapp.com/send?phone=55{$whatsapp}' target='blank'>
+                            <span class='badge text-bg-success'>
+                                <i class='bi bi-whatsapp'></i>
+                            <span>{$usuario['tel']}</span>
+                            </span>
+                        </a>
+                    </td>";
+        $lista .= "<td class='acesso'>
+                        <span class='badge {$style_badge}'>{$usuario['acesso']}</span>
+                    </td>";
+        $lista .= "<td class='td_entrar_perfil'>
+            <a href='http://localhost:8000/perfil?id={$usuario['id']}'>
+                <span class='badge text-bg-info'>
+                    <i class='bi bi-person-rolodex'></i>
+                </span>
+            </a>
+        </td>";
+        $lista .= "<td class='td_editar_perfil'>
+                        <span class='badge text-bg-warning' onclick='editar_usuario(\"user{$usuario["id"]}\")' data-bs-toggle='modal' data-bs-target='#userModal' style='cursor:pointer'>
+                            <i class='bi bi-gear-fill'></i>
+                        </span>
+                    </td>";
+        $lista .= "<td class='td_excluir_pasta'>
+                        <span class='badge text-bg-danger' onclick='excluir_usuario(\"user{$usuario["id"]}\")' data-bs-toggle='modal' data-bs-target='#userModal' style='cursor:pointer'>
+                            <i class='bi bi-trash3-fill'></i>
+                        </span>
+                    </td>";
         $lista .= "</tr>";
     }
 

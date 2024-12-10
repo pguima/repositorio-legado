@@ -1,6 +1,12 @@
 <?php
 
-include "../database/conexao.php";
+require __DIR__ . '/../vendor/autoload.php';
+
+use App\Models\Db\Database2;
+
+$database = new Database2;
+
+$pdo = $database->setConnection();
 
 try {
     // Recebe os dados enviados pelo Ajax
@@ -19,8 +25,8 @@ try {
 
     $stmt->execute();
 
-    echo json_encode(["status" => "success"]);
+    echo json_encode(["status" => "success", "tipo" => "cadastrar"]);
 } catch (PDOException $e) {
-    http_response_code(500);
+    //http_response_code(500);
     echo json_encode(["status" => "error", "message" => $e->getMessage()]);
 }
