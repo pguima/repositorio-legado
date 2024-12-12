@@ -14,6 +14,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- jQuery Mask Plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <!-- jQuery serializeJSON Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/3.2.1/jquery.serializejson.min.js"></script>
 </head>
 
 <body>
+
+    <div class="container-fluid">
+        <div class="row bg-dark">
+            <div class="col-2 text-white">
+                <h1>NatoVet</h1>
+            </div>
+        </div>
+    </div>
