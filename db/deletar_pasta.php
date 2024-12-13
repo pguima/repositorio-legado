@@ -17,6 +17,7 @@ try{
     $stmt = $pdo->prepare($sql);
     // Executando a consulta
     $stmt->execute();
+    echo json_encode(['status' => 'success', 'tipo' => 'deletar_pasta']);
 } catch (PDOException $e) {
     echo json_encode(["status" => "error", "message" => $e->getMessage()]);
 }
