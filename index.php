@@ -1,6 +1,5 @@
 <?php
 
-/*
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -12,16 +11,16 @@ if (!isset($_SESSION['user_id'])) {
 $path = parse_url($_SERVER['REQUEST_URI']);
 
 $content = match ($path['path']) {
-    '/' => "pages/usuarios.html",
+    '/' => "usuarios.php",
     '/pastas' => 'pages/pastas.html',
-    '/perfil' => 'pages/perfil.html',
+    '/perfil' => 'perfil.php',
     default => "pages/usuarios.html"
 };
 
-include "pages/header.html";
+include "pages/header.php";
 include $content;
-include "pages/footer.html";
-
+include "pages/footer.php";
+/*
 include "database/conexao.php";
 
 try {
@@ -41,12 +40,3 @@ try {
 	echo "Erro ao listar tabelas: " . $e->getMessage();
 }
 */
-
-include "pages/header.php";
-?>
-
-
-
-<?php
-include "pages/footer.php";
-?>

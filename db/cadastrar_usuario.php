@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: application/json');
 require __DIR__ . '/../vendor/autoload.php';
 
 use App\Models\Db\Database2;
@@ -12,14 +12,16 @@ try {
     // Recebe os dados enviados pelo Ajax
     $nome = $_POST['nome'];
     $email = $_POST['email'];
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Hash seguro da senha
     $tel = $_POST['tel'];
     $acesso = $_POST['acesso'];
 
     // Insere no banco de dados
-    $stmt = $pdo->prepare("INSERT INTO wf_usuario (nome, email, tel, acesso, criado_em) 
-                           VALUES (:nome, :email, :tel, :acesso, NOW())");
+    $stmt = $pdo->prepare("INSERT INTO wf_usuario (nome, email, senha, tel, acesso, criado_em) 
+                           VALUES (:nome, :email, :senha, :tel, :acesso, NOW())");
     $stmt->bindParam(':nome', $nome);
     $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':senha', $senha);
     $stmt->bindParam(':tel', $tel);
     $stmt->bindParam(':acesso', $acesso);
 

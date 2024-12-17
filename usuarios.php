@@ -19,6 +19,8 @@
                         <th>Email</th>
                         <th>Telefone</th>
                         <th>Acesso</th>
+                        <th>Pastas</th>
+                        <th>Arquivos</th>
                         <th>Perfil</th>
                         <th>Editar</th>
                         <th>Excluir</th>
